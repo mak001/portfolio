@@ -1,0 +1,12 @@
+Image:
+  extensions:
+    - 'ImageExtension'
+SiteConfig:
+  extensions:
+    - 'SiteConfigExtension'
+ProjectPage:
+  extensions:
+    - 'FigureExtension'
+BlogPost:
+  extensions:
+    - 'FigureExtension'

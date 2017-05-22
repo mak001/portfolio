@@ -1,0 +1,47 @@
+{
+  "name": "mak001/portfolio",
+  "description": "Website module for MatthewKoerber.com",
+  "authors": [
+    {
+      "name": "Matthew Koerber",
+      "email": "matthew@matthewkoerber.com",
+      "homepage": "http://matthewkoerber.com"
+    }
+  ],
+  "keywords": [
+    "silverstripe"
+  ],
+  "type": "silverstripe-module",
+  "license": "BSD-3-Clause",
+  "require": {
+  "php": ">=5.3.3",
+	"silverstripe/cms": "^3.5",
+	"silverstripe/framework": "^3.5",
+	"silverstripe/reports": "^3.5",
+	"silverstripe/siteconfig": "^3.5",
+	
+    "exadium/breadcrumbnavigation": "dev-master",
+	"axllent/silverstripe-trailing-slash": "dev-master",
+	"silverstripe/googlesitemaps": "1.6.0",
+	"xini/silverstripe-googleanalytics": "3.0.1",
+	"silverstripe/blog": "^2.4",
+	"mediaweb/silverstripe-tinymce4": "^1.1",
+	"silverstripe/spamprotection": "^2.0",
+	"silverstripe/recaptcha": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/PHPUnit": "~3.7@stable"
+  },
+	
+  "extra": {
+    "installer-name": "portfolio",
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "config": {
+    "process-timeout": 600
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -1,0 +1,61 @@
+Group:
+  projectcreate:
+    Title: Create Projects
+  projectedit:
+    Title: Edit Project
+  projectdelete:
+    Title: Project Delete
+
+Permission:
+  projectcreate:
+    Code: PROJECT_CREATE
+    Type: 1
+    Group: =>Group.projectcreate
+  projectedit:
+    Code: PROJECT_EDIT
+    Type: 1
+    Group: =>Permission.projectedit
+  projectdelete:
+    Code: PROJECT_DELETE
+    Type: 1
+    Group: =>Permission.projectdelete
+
+Member:
+  projectcreate:
+    FirstName: Create
+    Surname: Location
+    Email: create@test.com
+    Groups: =>Group.projectcreate
+  projectedit:
+    FirstName: Edit
+    Surname: Location
+    Email: edit@test.com
+    Groups: =>Group.projectedit
+  projectdelete:
+    FirstName: Delete
+    Surname: Location
+    Email: delete@test.com
+    Groups: =>Group.projectdelete
+  default:
+    FirstName: 'Default'
+    Surname: 'Member'
+    Email: 'member@test.com'
+
+ProjectLanguage:
+  java:
+    Title: Java
+    BGColor: FFFFFF
+    URLSegment: java
+    Description: Language of Java
+  php:
+    Title: PHP
+    BGColor: 000000
+    URLSegment: php
+    Description: Language of PHP
+    
+ProjectFramework:
+  wordpress:
+    Title: WordPress
+    BGColor: FFFFFF
+    UrlSegment: wordpress
+    Description: WordPress framework
