@@ -65,6 +65,10 @@ class ProjectUses extends DataObject {
             $content .= "." . $uses->CssClass() . ':hover{ background-color:#' . $hover . '; border-color:#' . $border . '; ' . $hoverColor. '}';
         }
 
+        if (!file_exists(ASSETS_PATH . '/css/')) {
+            mkdir(ASSETS_PATH . '/css/');
+        }
+        
         $fh = fopen(ASSETS_PATH . '/css/uses.css', 'w');
         fwrite($fh, $content);
         fclose($fh);
