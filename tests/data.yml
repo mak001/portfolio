@@ -43,7 +43,8 @@ Member:
 
 ProjectHolder:
   holder:
-    
+    Title: Projects
+    URLSegment: projects
 
 ProjectLanguage:
   java:
@@ -68,6 +69,6 @@ ProjectFramework:
   wordpress:
     Title: WordPress
     BGColor: FFFFFF
-    UrlSegment: wordpress
+    URLSegment: wordpress
     Description: WordPress framework
     ProjectHolder: =>ProjectHolder.holder

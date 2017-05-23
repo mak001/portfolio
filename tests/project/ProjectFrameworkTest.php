@@ -18,6 +18,12 @@ class ProjectFrameworkTest extends SapphireTest {
         $this->assertEquals('frame-wordpress', $seg);
     }
     
+    // tests path to list of frameworks
+    public function testGetAbsURL() {
+        $obj = $this->objFromFixture('ProjectFramework', 'wordpress');
+        $this->assertStringEndsWith('frameworks/', $obj->getAbsURL());
+    }
+    
 }
 
 ?>
