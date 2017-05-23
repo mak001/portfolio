@@ -1,9 +1,12 @@
-Image:
-  extensions:
-    - 'ImageExtension'
 SiteConfig:
   extensions:
     - 'SiteConfigExtension'
+Page_Controller:
+  extensions:
+    - 'Page_ControllerExtension'
+Image:
+  extensions:
+    - 'ImageExtension'
 ProjectPage:
   extensions:
     - 'FigureExtension'
