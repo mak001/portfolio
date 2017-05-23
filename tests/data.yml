@@ -72,3 +72,15 @@ ProjectFramework:
     URLSegment: wordpress
     Description: WordPress framework
     ProjectHolder: =>ProjectHolder.holder
+    
+ProjectSource:
+  title:
+    Title: Source Title
+  no-title:
+    
+ProjectView:
+  title:
+    Title: View Title
+  no-title:
+    
+

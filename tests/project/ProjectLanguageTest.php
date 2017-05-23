@@ -21,7 +21,8 @@ class ProjectLanguageTest extends SapphireTest {
     // tests path to list of frameworks
     public function testGetAbsURL() {
         $obj = $this->objFromFixture('ProjectLanguage', 'java');
-        $this->assertStringEndsWith('languages/', $obj->getAbsURL());
+        $absURL = $obj->getAbsURL();
+        $this->assertStringEndsWith('languages/', $absURL);
     }
 }
 
