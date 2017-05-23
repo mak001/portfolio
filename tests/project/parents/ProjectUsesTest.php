@@ -25,6 +25,10 @@ class ProjectUsesTest extends SapphireTest {
         $obj = $this->objFromFixture('ProjectLanguage', 'php');
         $color = $obj->getTextColorStyle($obj->BGColor);
         $this->assertEquals('color: #fff; color: rgba(255, 255, 255, 1);', $color);
+        
+        $obj = $this->objFromFixture('ProjectLanguage', 'no-color');
+        $color = $obj->getTextColorStyle($obj->BGColor);
+        $this->assertEquals('color: #000; color: rgba(0, 0, 0, 1);', $color);
     }
     
 }

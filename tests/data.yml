@@ -41,17 +41,28 @@ Member:
     Surname: 'Member'
     Email: 'member@test.com'
 
+ProjectHolder:
+  holder:
+    
+
 ProjectLanguage:
   java:
     Title: Java
     BGColor: FFFFFF
     URLSegment: java
     Description: Language of Java
+    ProjectHolder: =>ProjectHolder.holder
   php:
     Title: PHP
     BGColor: 000000
     URLSegment: php
     Description: Language of PHP
+    ProjectHolder: =>ProjectHolder.holder
+  no-color:
+    Title: no-color
+    URLSegment: no-color
+    Description: No Color
+    ProjectHolder: =>ProjectHolder.holder
     
 ProjectFramework:
   wordpress:
@@ -59,3 +70,4 @@ ProjectFramework:
     BGColor: FFFFFF
     UrlSegment: wordpress
     Description: WordPress framework
+    ProjectHolder: =>ProjectHolder.holder
