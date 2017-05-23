@@ -83,7 +83,7 @@ class ProjectPage extends Page {
         $image = $this->MainPhoto();
         
         if ($image == null && !$image->exists()) {
-            return "http://placehold.it/{$w}x{$h}";
+            return "//placehold.it/{$w}x{$h}";
         }
         
         if (abs($image->getWidth() - $w) > abs($image->getHeight() - $h)) {
@@ -98,7 +98,7 @@ class ProjectPage extends Page {
         if ($return != null) {
             return $return->Link();
         } else {
-            return "http://placehold.it/{$w}x{$h}";
+            return "//placehold.it/{$w}x{$h}";
         }
     }
     
