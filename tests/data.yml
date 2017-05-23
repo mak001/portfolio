@@ -83,4 +83,12 @@ ProjectView:
     Title: View Title
   no-title:
     
-
+ProjectPage:
+  portfolio:
+    Parent: =>ProjectHolder.holder
+    ProjectHolder: =>ProjectHolder.holder
+    Teaser: Teaser
+    Sources: =>ProjectSource.title
+    ViewLinks: =>ProjectView.title
+    Langauges: =>ProjectLanguage.php
+    Frameworks: =>ProjectFramework.wordpress

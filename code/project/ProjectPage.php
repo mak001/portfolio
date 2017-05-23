@@ -47,7 +47,7 @@ class ProjectPage extends Page {
                 'jpg',
                 'jpeg'
             ));
-            if ($key == main) {
+            if ($key == 'main') {
                 $field->setFolderName('project-photos/main');
             } else {
                 $field->setFolderName('project-photos');
