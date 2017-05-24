@@ -11,7 +11,11 @@ class ProjectHolder_ControllerTest extends FunctionalTest {
         
         $object = $this->objFromFixture('ProjectHolder', 'holder');
         $link = $object->LanguageLink();
-       
+        $link = substr($link, -1) === '/' ? $link : $link . '/';
+        
+        $page = $this->get($link . 'xxx');
+        $this->assertEquals(404, $page->getStatusCode());
+        
         $page = $this->get($link);
         
         $this->assertEquals(200, $page->getStatusCode());
@@ -41,7 +45,11 @@ class ProjectHolder_ControllerTest extends FunctionalTest {
         
         $object = $this->objFromFixture('ProjectHolder', 'holder');
         $link = $object->FrameworkLink();
-         
+        $link = substr($link, -1) === '/' ? $link : $link . '/';
+        
+        $page = $this->get($link . 'xxx');
+        $this->assertEquals(404, $page->getStatusCode());
+        
         $page = $this->get($link);
     
         $this->assertEquals(200, $page->getStatusCode());
