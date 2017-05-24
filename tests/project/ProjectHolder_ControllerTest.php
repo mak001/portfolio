@@ -7,6 +7,8 @@ class ProjectHolder_ControllerTest extends FunctionalTest {
     protected static $use_draft_site = true;
     
     public function testLanguages() {
+        Config::inst()->update('SSViewer', 'theme', "portfolio");
+        
         $object = $this->objFromFixture('ProjectHolder', 'holder');
         $link = $object->LanguageLink();
        
@@ -35,6 +37,8 @@ class ProjectHolder_ControllerTest extends FunctionalTest {
     }
     
     public function testFrameworks() {
+        Config::inst()->update('SSViewer', 'theme', "portfolio");
+        
         $object = $this->objFromFixture('ProjectHolder', 'holder');
         $link = $object->FrameworkLink();
          
