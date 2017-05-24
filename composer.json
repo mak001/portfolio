@@ -25,8 +25,15 @@
     "exadium/breadcrumbnavigation": "dev-master",
 	"silverstripe/blog": "^2.4",
 	"silverstripe/spamprotection": "^2.0",
-	"silverstripe/recaptcha": "^2.0"
+	"silverstripe/recaptcha": "^2.0",
+	"mak001/portfolio-theme": "1.0.x-dev"
   },
+  "repositories": [
+		{
+            "type": "vcs",
+            "url": "https://github.com/mak001/portfolio-theme"
+        }
+    ],
   "require-dev": {
     "phpunit/PHPUnit": "~3.7@stable"
   },
