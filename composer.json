@@ -26,6 +26,8 @@
 	"silverstripe/blog": "^2.4",
 	"silverstripe/spamprotection": "^2.0",
 	"silverstripe/recaptcha": "^2.0",
+	"xini/silverstripe-googleanalytics": "3.0.1",
+	
 	"mak001/portfolio-theme": "1.0.x-dev"
   },
   "repositories": [
