@@ -36,7 +36,9 @@ class PageWithLocalNav extends Page {
     }
     
     public function ShouldUpdate() {
-        return Permission::checkMember($member, 'CMS_ACCESS');
+        if (isset($member))
+            return Permission::checkMember($member, 'CMS_ACCESS');
+        return false;
     }
 }
 

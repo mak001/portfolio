@@ -90,7 +90,7 @@ ProjectPage:
     Teaser: Teaser
     Sources: =>ProjectSource.title
     ViewLinks: =>ProjectView.title
-    Langauges: =>ProjectLanguage.php
+    Languages: =>ProjectLanguage.java,=>ProjectLanguage.php
     Frameworks: =>ProjectFramework.wordpress
   core:
     Parent: =>ProjectHolder.holder
@@ -98,6 +98,6 @@ ProjectPage:
     Teaser: Teaser
     Sources: =>ProjectSource.title
     ViewLinks: =>ProjectView.title
-    Langauges: =>ProjectLanguage.php
+    Languages: =>ProjectLanguage.php
     Frameworks: =>ProjectFramework.wordpress
     MainImageCropMiddle: true
