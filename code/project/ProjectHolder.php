@@ -103,11 +103,11 @@ JS
                 'SelectedLanguage' => $language
             );
         } else {
-            
-            $this->languageList = $this->ProjectLanguages()
-                ->leftJoin('ProjectPage_Languages', 'ProjectUses.ID = ProjectPage_Languages.ProjectLanguageID')
-                ->exclude('ProjectPage_Languages.ProjectPageID', '0')
-                ->distinct(true);
+            $this->languageList = ProjectPage::get()
+                ->filter(array(
+                    'ParentID' => $this->ID
+                ))
+                ->relation("Languages");
             
             $this->addToBreadCrumb($this->LanguageLink(), "Languages");
             
@@ -145,11 +145,12 @@ JS
             );
         } else {
             
-            $this->frameworkList = $this->ProjectFrameworks()
-                ->leftJoin('ProjectPage_Frameworks', 'ProjectUses.ID = ProjectPage_Frameworks.ProjectFrameworkID')
-                ->exclude('ProjectPage_Frameworks.ProjectPageID', '0')
-                ->distinct(true);
-            
+            $this->frameworkList= ProjectPage::get()
+            ->filter(array(
+                'ParentID' => $this->ID
+            ))
+            ->relation("Frameworks");
+
             $this->addToBreadCrumb($this->FrameworkLink(), "Frameworks");
             
             return array(

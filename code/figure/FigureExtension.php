@@ -13,33 +13,44 @@ class FigureExtension extends DataExtension {
                 global $photos;
                 $photos = $this->owner->Photos();
                 
+                global $lastID;
+                $lastID = 0;
+                
                 ShortcodeParser::get('default')->register('img', function($args, $text, $parser, $tag) {
                     
-                    global $photos;
+                    global $photos, $lastID;
                     $img;
                     $classes = "figure";
                     
+                    $defaults = array(
+                        "img" => 1,
+                        "order" => "last"
+                    );
+                    
+                    $options = array_merge($defaults, $args);
                     
                     if (count($photos) == 0) {
                         return '';
                         
-                    } else if ($args['img'] < 1 || count($photos) < $args['img']) {
+                    } else if ($options['img'] < 1 || count($photos) < $options['img']) {
                         $img = $photos[0];
                         
                     } else {
                         // normal people count from 1
-                        $img = $photos[$args['img'] - 1];
+                        $img = $photos[$options['img'] - 1];
                     }
                     
-                    if ($args['order'] == 'first') {
+                    if ($options['order'] == 'first') {
                         $classes .= ' first';
                     }
                     
                     $values = new ArrayData(array(
                         'Classes' => $classes,
                         'Image' => $img,
-                        'Id' => $imgId
+                        'Id' => $lastID
                     ));
+                    
+                    $lastID++;
                     
                     return $values->renderWith('Figure');
                 });

@@ -128,7 +128,6 @@ class ProjectPage_Controller extends Page_Controller {
         'show'
     );
     
-    private $imgId = 0;
     private $viewId = 1;
     
     public function init() {
