@@ -85,6 +85,7 @@ ProjectView:
     
 ProjectPage:
   portfolio:
+    URLSegment: portfolio
     Parent: =>ProjectHolder.holder
     ProjectHolder: =>ProjectHolder.holder
     Teaser: Teaser
@@ -93,11 +94,11 @@ ProjectPage:
     Languages: =>ProjectLanguage.java,=>ProjectLanguage.php
     Frameworks: =>ProjectFramework.wordpress
   core:
+    URLSegment: core
     Parent: =>ProjectHolder.holder
     ProjectHolder: =>ProjectHolder.holder
     Teaser: Teaser
     Sources: =>ProjectSource.title
-    ViewLinks: =>ProjectView.title
     Languages: =>ProjectLanguage.php
     Frameworks: =>ProjectFramework.wordpress
     MainImageCropMiddle: true
