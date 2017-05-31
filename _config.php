@@ -10,4 +10,8 @@ BreadcrumbNavigation::$stopAtPageType = false;
 BreadcrumbNavigation::$showHidden = false; 
 BreadcrumbNavigation::$homeURLSegment = 'home';
 
+ShortcodeParser::get('default')->register('languagelink', array('Shortcodes', 'parseLanguageLink'));
+ShortcodeParser::get('default')->register('frameworklink', array('Shortcodes', 'parseFrameworkLink'));
+    
+    
 ?>

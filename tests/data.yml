@@ -40,6 +40,15 @@ Member:
     FirstName: 'Default'
     Surname: 'Member'
     Email: 'member@test.com'
+    
+Image:
+  image:
+  
+Page:
+  langlink:
+    Content: language link [languagelink]lang[/languagelink]
+  framelink:
+    Content: framework link [frameworklink]frame[/frameworklink]
 
 ProjectHolder:
   holder:
