@@ -1,0 +1,11 @@
+---
+Name: portfolio
+---
+
+mak001\portfolio\objects\link\Source:
+  extensions:
+    mak001\portfolio\extensions\LinkDataExtension
+
+mak001\portfolio\objects\link\View:
+  extensions:
+    mak001\portfolio\extensions\LinkDataExtension

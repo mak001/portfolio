@@ -1,0 +1,40 @@
+{
+  "name": "mak001-portfolio-module",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "watch": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
+    "build": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "package": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint-js": "node_modules/.bin/eslint src/js",
+    "lint-sass": "node_modules/.bin/sass-lint -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mak001/portfolio.git"
+  },
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "bootstrap-accessibility-plugin": "^1.0.2",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "laravel-mix": "^1.0.7",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^7.1.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.6.1",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "postcss-loader": "^2.0.6",
+    "resolve-url-loader": "^2.1.0",
+    "sass-lint": "^1.10.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3"
+  }
+}

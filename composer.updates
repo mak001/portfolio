@@ -1,0 +1,10 @@
+## for module
+"zauberfisch/silverstripe-better-image": "dev-master",
+"exadium/breadcrumbnavigation": "dev-master",
+"xini/silverstripe-googleanalytics": "3.0.1",
+
+## for installer
+"silverstripe/recaptcha": "dev-master",
+"axllent/silverstripe-trailing-slash": "dev-master",
+    "mak001/portfolio": "2.x-dev",
+    "mak001/portfolio-theme": "2.x-dev"
