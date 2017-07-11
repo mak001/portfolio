@@ -40,9 +40,20 @@ trait ProjectHolderObject
     public function getLink()
     {
         return Controller::join_links(
-            $this->ProjectHolder()->Link(),
+            $this->Holder()->Link(),
             $this->getListUrlSegment(),
             $this->URLSegment
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlPrefix()
+    {
+        return Controller::join_links(
+            $this->Holder()->Link(),
+            $this->getListUrlSegment()
         );
     }
 
