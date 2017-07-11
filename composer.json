@@ -25,12 +25,19 @@
     "silverstripe/blog": "dev-master",
 
     "symbiote/silverstripe-gridfieldextensions": "^3.0",
-    "tractorcow/silverstripe-colorpicker": "^4@dev"
+    "tractorcow/silverstripe-colorpicker": "^4@dev",
+
+    "silverstripe/lumberjack": "^2.0"
   },
   "require-dev": {
     "phpunit/PHPUnit": "~3.7@stable"
   },
-
+  "autoload": {
+    "psr-4": {
+      "mak001\\portfolio\\": "src/",
+      "mak001\\portfolio\\tests\\": "tests/"
+    }
+  },
   "extra": {
     "installer-name": "portfolio",
     "branch-alias": {

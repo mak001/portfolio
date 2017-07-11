@@ -7,6 +7,7 @@ mix.setPublicPath(
 );
 
 mix.sass('scss/main.scss', 'css/main.css');
+mix.sass('scss/cms.scss', 'css/cms.css');
 
 mix.webpackConfig({
     externals: {
