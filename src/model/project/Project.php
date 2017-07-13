@@ -11,6 +11,15 @@ class Project extends Page
 {
 
     /**
+     * @var string
+     */
+    private static $singular_name = 'Project';
+    /**
+     * @var string
+     */
+    private static $plural_name = 'Projects';
+
+    /**
      * @var array
      */
     private static $many_many = array(

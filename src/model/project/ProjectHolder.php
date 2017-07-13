@@ -2,25 +2,11 @@
 
 namespace mak001\portfolio\model\project;
 
-use mak001\portfolio\model\project\categorisation\Framework;
-use mak001\portfolio\model\project\categorisation\Language;
 use Page;
-use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
-use SilverStripe\Lumberjack\Forms\GridFieldConfig_Lumberjack;
-use SilverStripe\Lumberjack\Model\Lumberjack;
-use SilverStripe\View\Requirements;
+use SilverStripe\ORM\ManyManyList;
 
 class ProjectHolder extends Page
 {
-
-    /**
-     * @var array
-     */
-    private static $has_many = array(
-        'Frameworks' => Framework::class,
-        'Languages' => Language::class
-    );
 
     /**
      * @var array
@@ -29,56 +15,31 @@ class ProjectHolder extends Page
         Project::class
     );
 
-    /**
-     * @var array
-     */
-    private static $extensions = array(
-        Lumberjack::class
-    );
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCMSFields()
+    public function getProjects()
     {
-        Requirements::css(PORTFOLIO_DIR . '/css/cms.css');
-        $fields = parent::getCMSFields();
+        return Project::get()->filter('ParentID', $this->ID);
+    }
 
-        $frameworks = GridField::create(
-            'Frameworks',
-            'Frameworks',
-            $this->Frameworks(),
-            GridFieldConfig_RecordEditor::create(
-                15,
-                $this->Frameworks()->sort('Title'),
-                Framework::class,
-                'Frameworks',
-                'Projects'
-            )
-        );
+    /**
+     * @return ManyManyList|false
+     */
+    public function getFrameworks()
+    {
+        if (0 < $this->getProjects()->count()) {
+            return $this->getProjects()->relation("Frameworks");
+        }
+        return false;
+    }
 
-        $languages = GridField::create(
-            'Languages',
-            'Languages',
-            $this->Languages(),
-            GridFieldConfig_RecordEditor::create(
-                15,
-                $this->Languages()->sort('Title'),
-                Languages::class,
-                'Languages',
-                'Projects'
-            )
-        );
-
-        $fields->addFieldsToTab(
-            'Root.Categorisation',
-            array(
-                $frameworks,
-                $languages
-            )
-        );
-
-        return $fields;
+    /**
+     * @return ManyManyList|false
+     */
+    public function getLanguages()
+    {
+        if (0 < $this->getProjects()->count()) {
+            return $this->getProjects()->relation("Languages");
+        }
+        return false;
     }
 
 }

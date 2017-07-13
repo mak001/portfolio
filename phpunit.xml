@@ -1,0 +1,27 @@
+<phpunit bootstrap="../framework/tests/bootstrap.php" colors="true">
+
+    <testsuite name="Default">
+        <directory>tests</directory>
+    </testsuite>
+
+    <!--
+    <listeners>
+        <listener class="SilverStripe\Dev\TestListener" />
+    </listeners>
+    -->
+
+    <groups>
+        <exclude>
+            <group>sanitychecks</group>
+        </exclude>
+    </groups>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <directory suffix=".php">tests/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

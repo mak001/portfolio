@@ -35,12 +35,13 @@ trait ProjectHolderObject
     /**
      * Returns a relative link to this category.
      *
+     * @param $holder
      * @return string
      */
-    public function getLink()
+    public function getLink($holder)
     {
         return Controller::join_links(
-            $this->Holder()->Link(),
+            $holder()->Link(),
             $this->getListUrlSegment(),
             $this->URLSegment
         );
@@ -51,10 +52,7 @@ trait ProjectHolderObject
      */
     public function getUrlPrefix()
     {
-        return Controller::join_links(
-            $this->Holder()->Link(),
-            $this->getListUrlSegment()
-        );
+        return $this->getListUrlSegment();
     }
 
     /**

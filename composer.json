@@ -22,7 +22,6 @@
     "silverstripe/siteconfig": "4.0.x-dev",
     "silverstripe/reports": "4.0.x-dev",
     "silverstripe/versioned": "1.0.x-dev",
-    "silverstripe/blog": "dev-master",
 
     "symbiote/silverstripe-gridfieldextensions": "^3.0",
     "tractorcow/silverstripe-colorpicker": "^4@dev",
@@ -30,7 +29,7 @@
     "silverstripe/lumberjack": "^2.0"
   },
   "require-dev": {
-    "phpunit/PHPUnit": "~3.7@stable"
+    "phpunit/PHPUnit": "~5.7@stable"
   },
   "autoload": {
     "psr-4": {

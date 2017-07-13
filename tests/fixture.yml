@@ -1,0 +1,113 @@
+SilverStripe\Security\Group:
+  projectcreate:
+    Title: Create Projects
+  projectedit:
+    Title: Edit Project
+  projectdelete:
+    Title: Project Delete
+
+SilverStripe\Security\Permission:
+  projectcreate:
+    Code: PROJECT_CREATE
+    Type: 1
+    Group: =>SilverStripe\Security\Group.projectcreate
+  projectedit:
+    Code: PROJECT_EDIT
+    Type: 1
+    Group: =>SilverStripe\Security\Permission.projectedit
+  projectdelete:
+    Code: PROJECT_DELETE
+    Type: 1
+    Group: =>SilverStripe\Security\Permission.projectdelete
+
+SilverStripe\Security\Member:
+  projectcreate:
+    FirstName: Create
+    Surname: Location
+    Email: create@test.com
+    Groups: =>SilverStripe\Security\Group.projectcreate
+  projectedit:
+    FirstName: Edit
+    Surname: Location
+    Email: edit@test.com
+    Groups: =>SilverStripe\Security\Group.projectedit
+  projectdelete:
+    FirstName: Delete
+    Surname: Location
+    Email: delete@test.com
+    Groups: =>SilverStripe\Security\Group.projectdelete
+  default:
+    FirstName: 'Default'
+    Surname: 'Member'
+    Email: 'member@test.com'
+
+#Image:
+#  image:
+
+Page:
+  langlink:
+    Content: language link [languagelink]lang[/languagelink]
+  framelink:
+    Content: framework link [frameworklink]frame[/frameworklink]
+
+mak001\portfolio\model\project\ProjectHolder:
+  holder:
+    Title: Projects
+    URLSegment: projects
+  empty:
+    Title: Empty
+    URLSegment: empty
+
+mak001\portfolio\model\project\categorisation\Language:
+  java:
+    Title: Java
+    BGColor: FFFFFF
+    URLSegment: java
+    Description: Language of Java
+  php:
+    Title: PHP
+    BGColor: 000000
+    URLSegment: php
+    Description: Language of PHP
+  no-color:
+    Title: no-color
+    URLSegment: no-color
+    Description: No Color
+
+mak001\portfolio\model\project\categorisation\Framework:
+  wordpress:
+    Title: "WordPress"
+    BGColor: "FFFFFF"
+    URLSegment: "wordpress"
+    Description: "WordPress framework"
+
+#ProjectSource:
+#  title:
+#    Title: Source Title
+#  no-title:
+
+#ProjectView:
+#  title:
+#    Title: View Title
+#  no-title:
+
+mak001\portfolio\model\project\Project:
+  portfolio:
+    URLSegment: portfolio
+    Parent: =>mak001\portfolio\model\project\ProjectHolder.holder
+    ProjectHolder: =>mak001\portfolio\model\project\ProjectHolder.holder
+    Teaser: Teaser
+#    Sources: =>ProjectSource.title
+#    ViewLinks: =>ProjectView.title
+    Languages: =>mak001\portfolio\model\project\categorisation\Language.java,=>mak001\portfolio\model\project\categorisation\Language.php
+    Frameworks: =>mak001\portfolio\model\project\categorisation\Framework.wordpress
+  core:
+    URLSegment: core
+    Parent: =>mak001\portfolio\model\project\ProjectHolder.holder
+    ProjectHolder: =>mak001\portfolio\model\project\ProjectHolder.holder
+    Teaser: Teaser
+#    Sources: =>ProjectSource.title
+    Languages: =>mak001\portfolio\model\project\categorisation\Language.php
+    Frameworks: =>mak001\portfolio\model\project\categorisation\Framework.wordpress
+    MainImageCropMiddle: true
+  no-lang:

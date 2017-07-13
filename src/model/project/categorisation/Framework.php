@@ -4,7 +4,6 @@
 namespace mak001\portfolio\model\project\categorisation;
 
 use mak001\portfolio\model\project\Project;
-use mak001\portfolio\model\project\ProjectHolder;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;
@@ -26,18 +25,11 @@ class Framework extends DataObject implements CategorisationObject
     );
 
     //Add an SQL index for the URLSegment
-    static $indexes = array(
+    private static $indexes = array(
         "URLSegment" => array(
             'type' => 'unique',
             'value' => 'URLSegment'
         )
-    );
-
-    /**
-     * @var array
-     */
-    private static $has_one = array(
-        'Holder' => ProjectHolder::class
     );
 
     /**

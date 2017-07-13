@@ -25,18 +25,11 @@ class Language extends DataObject implements CategorisationObject
     );
 
     //Add an SQL index for the URLSegment
-    static $indexes = array(
+    private static $indexes = array(
         "URLSegment" => array(
             'type' => 'unique',
             'value' => 'URLSegment'
         )
-    );
-
-    /**
-     * @var array
-     */
-    private static $has_one = array(
-        'Holder' => ProjectHolder::class
     );
 
     /**
@@ -61,7 +54,8 @@ class Language extends DataObject implements CategorisationObject
         $prefix = $this->getUrlPrefix();
         $urlsegment->setURLPrefix($prefix);
 
-        $helpText = _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
+        $helpText = _t('SiteTreeURLSegmentField.HelpChars',
+            ' Special characters are automatically converted or removed.');
         $urlsegment->setHelpText($helpText);
 
         return FieldList::create(array(
