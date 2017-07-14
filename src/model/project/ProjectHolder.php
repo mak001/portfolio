@@ -8,25 +8,24 @@ use SilverStripe\ORM\ManyManyList;
 class ProjectHolder extends Page
 {
 
+    private static $belongs_many_many = array(
+        'Projects' => Project::class
+    );
+
     /**
      * @var array
      */
-    private static $allowed_children = array(
+    private static $allowed_children =  array(
         Project::class
     );
-
-    public function getProjects()
-    {
-        return Project::get()->filter('ParentID', $this->ID);
-    }
 
     /**
      * @return ManyManyList|false
      */
     public function getFrameworks()
     {
-        if (0 < $this->getProjects()->count()) {
-            return $this->getProjects()->relation("Frameworks");
+        if (0 < $this->Projects()->count()) {
+            return $this->Projects()->relation("Frameworks");
         }
         return false;
     }
@@ -36,8 +35,8 @@ class ProjectHolder extends Page
      */
     public function getLanguages()
     {
-        if (0 < $this->getProjects()->count()) {
-            return $this->getProjects()->relation("Languages");
+        if (0 < $this->Projects()->count()) {
+            return $this->Projects()->relation("Languages");
         }
         return false;
     }

@@ -1,33 +1,37 @@
 <?php
 
-
 namespace mak001\portfolio\model\project\categorisation;
 
-
+use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\Control\Controller;
-use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\Tab;
-use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
+use TractorCow\Colorpicker\Forms\ColorField;
 
 trait ProjectHolderObject
 {
-
     /**
      * {@inheritdoc}
      */
     public function getCMSFields()
     {
-        $shortClass = ClassInfo::shortName(self::class);
-        $fields = TabSet::create(
-            'Root',
-            Tab::create(
-                'Main',
-                TextField::create('Title', _t($shortClass . '.Title', 'Title'))
-            )
-        );
-        $fields = FieldList::create($fields);
+        $urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
+
+        $prefix = $this->getUrlPrefix();
+        $urlsegment->setURLPrefix($prefix);
+
+        $helpText = _t('SiteTreeURLSegmentField.HelpChars',
+            ' Special characters are automatically converted or removed.');
+        $urlsegment->setHelpText($helpText);
+
+        $fields = FieldList::create(array(
+            TextField::create('Title'),
+            $urlsegment,
+            new ColorField('BGColor', 'Background Color'),
+            TextareaField::create('Description')
+        ));
+
         $this->extend('updateCMSFields', $fields);
         return $fields;
     }

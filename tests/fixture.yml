@@ -50,14 +50,6 @@ Page:
   framelink:
     Content: framework link [frameworklink]frame[/frameworklink]
 
-mak001\portfolio\model\project\ProjectHolder:
-  holder:
-    Title: Projects
-    URLSegment: projects
-  empty:
-    Title: Empty
-    URLSegment: empty
-
 mak001\portfolio\model\project\categorisation\Language:
   java:
     Title: Java
@@ -94,8 +86,6 @@ mak001\portfolio\model\project\categorisation\Framework:
 mak001\portfolio\model\project\Project:
   portfolio:
     URLSegment: portfolio
-    Parent: =>mak001\portfolio\model\project\ProjectHolder.holder
-    ProjectHolder: =>mak001\portfolio\model\project\ProjectHolder.holder
     Teaser: Teaser
 #    Sources: =>ProjectSource.title
 #    ViewLinks: =>ProjectView.title
@@ -103,11 +93,18 @@ mak001\portfolio\model\project\Project:
     Frameworks: =>mak001\portfolio\model\project\categorisation\Framework.wordpress
   core:
     URLSegment: core
-    Parent: =>mak001\portfolio\model\project\ProjectHolder.holder
-    ProjectHolder: =>mak001\portfolio\model\project\ProjectHolder.holder
     Teaser: Teaser
 #    Sources: =>ProjectSource.title
     Languages: =>mak001\portfolio\model\project\categorisation\Language.php
     Frameworks: =>mak001\portfolio\model\project\categorisation\Framework.wordpress
     MainImageCropMiddle: true
   no-lang:
+
+mak001\portfolio\model\project\ProjectHolder:
+  holder:
+    Title: Projects
+    URLSegment: projects
+    Projects: =>mak001\portfolio\model\project\Project.portfolio,=>mak001\portfolio\model\project\Project.core,=>mak001\portfolio\model\project\Project.no-lang
+  empty:
+    Title: Empty
+    URLSegment: empty

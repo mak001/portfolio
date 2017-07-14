@@ -1,16 +1,10 @@
 <?php
 
-
 namespace mak001\portfolio\model\project\categorisation;
 
 use mak001\portfolio\model\project\Project;
-use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataObject;
 use TractorCow\Colorpicker\Color;
-use TractorCow\Colorpicker\Forms\ColorField;
 
 class Framework extends DataObject implements CategorisationObject
 {
@@ -45,24 +39,6 @@ class Framework extends DataObject implements CategorisationObject
     protected function getListUrlSegment()
     {
         return 'frameworks/';
-    }
-
-    public function getCMSFields()
-    {
-        $urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
-
-        $prefix = $this->getUrlPrefix();
-        $urlsegment->setURLPrefix($prefix);
-
-        $helpText = _t('SiteTreeURLSegmentField.HelpChars', ' Special characters are automatically converted or removed.');
-        $urlsegment->setHelpText($helpText);
-
-        return FieldList::create(array(
-            TextField::create('Title'),
-            $urlsegment,
-            new ColorField('BGColor', 'Background Color'),
-            TextareaField::create('Description')
-        ));
     }
 
 }
