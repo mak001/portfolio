@@ -23,7 +23,7 @@ class ProjectAdmin extends ModelAdmin
     /**
      * @var string
      */
-    private static $url_segment  = 'projects';
+    private static $url_segment = 'projects';
 
     /**
      * @var string

@@ -1,27 +1,33 @@
-<phpunit bootstrap="../framework/tests/bootstrap.php" colors="true">
+<phpunit bootstrap="framework/tests/bootstrap.php" colors="true">
 
-    <testsuite name="Default">
-        <directory>tests</directory>
-    </testsuite>
-
-    <!--
-    <listeners>
-        <listener class="SilverStripe\Dev\TestListener" />
-    </listeners>
-    -->
-
-    <groups>
-        <exclude>
-            <group>sanitychecks</group>
-        </exclude>
-    </groups>
+    <testsuites>
+        <testsuite>
+            <directory suffix="Test.php">portfolio/tests/</directory>
+        </testsuite>
+        <testsuite name="admin">
+            <directory suffix="Test.php">portfolio/tests/admin/</directory>
+        </testsuite>
+        <testsuite name="controllers">
+            <directory suffix="Test.php">portfolio/tests/controllers/</directory>
+        </testsuite>
+        <testsuite name="extensions">
+            <directory suffix="Test.php">portfolio/tests/extensions/</directory>
+        </testsuite>
+        <testsuite name="model">
+            <directory suffix="Test.php">portfolio/tests/model/</directory>
+        </testsuite>
+        <testsuite name="project">
+            <directory suffix="Test.php">portfolio/tests/model/project/</directory>
+        </testsuite>
+    </testsuites>
 
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">portfolio/src/</directory>
             <exclude>
-                <directory suffix=".php">tests/</directory>
+                <directory suffix=".php">portfolio/tests/</directory>
             </exclude>
         </whitelist>
     </filter>
+
 </phpunit>

@@ -2,7 +2,8 @@
 
 namespace mak001\portfolio\tests\model\project;
 
-use \SilverStripe\Dev\SapphireTest;
+use mak001\portfolio\model\project\ProjectHolder;
+use SilverStripe\Dev\SapphireTest;
 
 class ProjectHolderTest extends SapphireTest
 {
@@ -10,14 +11,14 @@ class ProjectHolderTest extends SapphireTest
     protected static $fixture_file = 'portfolio/tests/fixture.yml';
 
     public function testGetFrameworks() {
-        $object = $this->objFromFixture('mak001\portfolio\model\project\ProjectHolder', 'holder');
+        $object = $this->objFromFixture(ProjectHolder::class, 'holder');
         $frames = $object->getFrameworks();
 
         $this->assertEquals(1, $frames->count());
         $this->assertEquals('WordPress', $frames->first()->Title);
 
 
-        $object = $this->objFromFixture('mak001\portfolio\model\project\ProjectHolder', 'empty');
+        $object = $this->objFromFixture(ProjectHolder::class, 'empty');
         $frames = $object->getFrameworks();
 
         echo $frames;
@@ -25,14 +26,14 @@ class ProjectHolderTest extends SapphireTest
     }
 
     public function testGetLanguages() {
-        $object = $this->objFromFixture('mak001\portfolio\model\project\ProjectHolder', 'holder');
+        $object = $this->objFromFixture(ProjectHolder::class, 'holder');
         $langs = $object->getLanguages();
 
         $this->assertEquals(2, $langs->count());
         $this->assertEquals('Java', $langs->first()->Title);
 
 
-        $object = $this->objFromFixture('mak001\portfolio\model\project\ProjectHolder', 'empty');
+        $object = $this->objFromFixture(ProjectHolder::class, 'empty');
         $langs = $object->getLanguages();
 
         echo $langs;
