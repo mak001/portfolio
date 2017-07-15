@@ -6,7 +6,7 @@
  * Time: 8:33 AM
  */
 
-namespace mak001\poerfolio\objects\link;
+namespace mak001\portfolio\objects\link;
 
 
 use SilverStripe\ORM\DataObject;

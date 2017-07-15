@@ -10,6 +10,15 @@ class Language extends DataObject implements CategorisationObject
 {
     use ProjectHolderObject;
 
+    /**
+     * {@inheritDoc}
+     * @var string
+     */
+    private static $table_name = 'Language';
+
+    /**
+     * @var array
+     */
     private static $db = array(
         'Title' => 'Varchar',
         'BGColor' => Color::class,
@@ -17,7 +26,11 @@ class Language extends DataObject implements CategorisationObject
         'Description' => 'Text'
     );
 
-    //Add an SQL index for the URLSegment
+    /**
+     * Add an SQL index for the URLSegment
+     *
+     * @var array
+     */
     private static $indexes = array(
         "URLSegment" => array(
             'type' => 'unique',

@@ -16,7 +16,6 @@ class ProjectAdmin extends ModelAdmin
      * @var array
      */
     private static $managed_models = array(
-        Project::class,
         Framework::class,
         Language::class
     );

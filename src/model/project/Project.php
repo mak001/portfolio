@@ -1,17 +1,23 @@
 <?php
 
-
 namespace mak001\portfolio\model\project;
 
 use mak001\portfolio\model\project\categorisation\Framework;
 use mak001\portfolio\model\project\categorisation\Language;
-use Page;
-use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridFieldConfig;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
-use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
-use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
+use \Page;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
+use SilverStripe\View\Requirements;
+
+/**
+ * Class Project
+ * @package mak001\portfolio\model\project
+ */
 class Project extends Page
 {
 
@@ -26,6 +32,12 @@ class Project extends Page
     private static $plural_name = 'Projects';
 
     /**
+     * {@inheritDoc}
+     * @var string
+     */
+    private static $table_name = 'Project';
+
+    /**
      * @var array
      */
     private static $db = array(
@@ -34,8 +46,11 @@ class Project extends Page
         'MainImageCropMiddle' => 'Boolean'
     );
 
+    /**
+     * @var array
+     */
     private static $has_one = array(
-        'MainPhoto' => 'Image'
+        'MainPhoto' => Image::class,
     );
 
     /**
@@ -43,18 +58,8 @@ class Project extends Page
      */
     private static $many_many = array(
         'Frameworks' => Framework::class,
-        'Languages' => Language::class,
-        "Holders" => ProjectHolder::class
+        'Languages' => Language::class
     );
-
-    /**
-     * @var array
-     */
-    private static $many_many_extraFields = [
-        'Holders' => [
-            'Sort' => 'Int',
-        ],
-    ];
 
     /**
      * @var array
@@ -74,29 +79,33 @@ class Project extends Page
      */
     private static $show_in_sitetree = false;
 
+    /**
+     * @return \SilverStripe\Forms\FieldList
+     */
     public function getCMSFields()
     {
+        Requirements::css(PORTFOLIO_DIR . '/css/cms.css');
+
         $fields = parent::getCMSFields();
 
         $config = GridFieldConfig_RelationEditor::create();
 
-        if (class_exists('GridFieldOrderableRows')) {
-            $config->addComponent(new GridFieldOrderableRows());
-        }
+        if (class_exists(GridFieldAddExistingSearchButton::class)) {
+            $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
 
-        if (class_exists('GridFieldAddExistingSearchButton')) {
-            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
             $config->addComponent(new GridFieldAddExistingSearchButton());
         }
-        $config->removeComponentsByType('GridFieldAddNewButton');
+        $config->removeComponentsByType(GridFieldAddNewButton::class);
 
-        $holderField = GridField::create('Holders', 'Holders', $this->Holders()->sort('Sort'), $config);
+        $frameworks = GridField::create('Frameworks', 'Frameworks', $this->Frameworks(), $config);
+        $languages = GridField::create('Languages', 'Languages', $this->Languages(), $config);
 
-        $fields->addFieldsToTab("Root.Holders", array(
-            $holderField
+        $fields->addFieldsToTab("Root.Categorisation", array(
+            $frameworks,
+            $languages
         ));
-
         return $fields;
     }
+
 
 }

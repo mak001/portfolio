@@ -11,6 +11,12 @@ class Framework extends DataObject implements CategorisationObject
 
     use ProjectHolderObject;
 
+    /**
+     * {@inheritDoc}
+     * @var string
+     */
+    private static $table_name = 'Framework';
+
     private static $db = array(
         'Title' => 'Varchar',
         'BGColor' => Color::class,
@@ -18,7 +24,11 @@ class Framework extends DataObject implements CategorisationObject
         'Description' => 'Text'
     );
 
-    //Add an SQL index for the URLSegment
+    /**
+     * Add an SQL index for the URLSegment
+     *
+     * @var array
+     */
     private static $indexes = array(
         "URLSegment" => array(
             'type' => 'unique',

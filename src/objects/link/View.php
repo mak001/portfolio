@@ -6,7 +6,7 @@
  * Time: 8:34 AM
  */
 
-namespace mak001\poerfolio\objects\link;
+namespace mak001\portfolio\objects\link;
 
 
 use mak001\portfolio\pages\Project;
