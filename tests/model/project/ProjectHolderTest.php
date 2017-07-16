@@ -10,6 +10,11 @@ class ProjectHolderTest extends SapphireTest
 
     protected static $fixture_file = 'portfolio/tests/fixture.yml';
 
+    /**
+     * Tests getFrameworks()
+     *
+     * indirectly tests getProjects()
+     */
     public function testGetFrameworks() {
         $object = $this->objFromFixture(ProjectHolder::class, 'holder');
         $frames = $object->getFrameworks();
@@ -25,6 +30,11 @@ class ProjectHolderTest extends SapphireTest
         $this->assertFalse($frames);
     }
 
+    /**
+     * Tests getLanguages()
+     *
+     * indirectly tests getProjects()
+     */
     public function testGetLanguages() {
         $object = $this->objFromFixture(ProjectHolder::class, 'holder');
         $langs = $object->getLanguages();

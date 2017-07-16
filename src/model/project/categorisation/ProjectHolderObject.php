@@ -45,7 +45,7 @@ trait ProjectHolderObject
     public function getLink($holder)
     {
         return Controller::join_links(
-            $holder()->Link(),
+            $holder->Link(),
             $this->getListUrlSegment(),
             $this->URLSegment
         );
