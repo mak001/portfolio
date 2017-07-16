@@ -24,6 +24,11 @@ class ProjectHolderController extends PageController
     protected $frameworkList;
 
     /**
+     * @var int
+     */
+    protected $limit = 0;
+
+    /**
      * @var array
      */
     private static $allowed_actions = array(
@@ -54,6 +59,8 @@ JS
         $this->projectList = $holder->getProjects();
         $this->languageList = $holder->getLanguages();
         $this->frameworkList = $holder->getFrameworks();
+
+        $this->limit = $this->getRequest()->getVar('limit');
     }
 
 
@@ -65,7 +72,9 @@ JS
      */
     public function PaginatedProjects($num = 6)
     {
-        return PaginatedList::create($this->projectList, $this->getRequest())->setPageLength($num);
+        $limit = $this->limit ?: $num;
+        return PaginatedList::create($this->projectList, $this->getRequest())
+            ->setPageLength($limit);
     }
 
     /**
@@ -77,7 +86,8 @@ JS
     public function PaginatedLanguages($num = 12)
     {
         if ($this->languageList) {
-            return PaginatedList::create($this->languageList, $this->getRequest())->setPageLength($num);
+            $limit = $this->limit ?: $num;
+            return PaginatedList::create($this->languageList, $this->getRequest())->setPageLength($limit);
         }
     }
 
@@ -90,7 +100,8 @@ JS
     public function PaginatedFrameworks($num = 12)
     {
         if ($this->frameworkList) {
-            return PaginatedList::create($this->frameworkList, $this->getRequest())->setPageLength($num);
+            $limit = $this->limit ?: $num;
+            return PaginatedList::create($this->frameworkList, $this->getRequest())->setPageLength($limit);
         }
     }
 }

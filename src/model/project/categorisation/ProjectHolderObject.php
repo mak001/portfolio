@@ -2,8 +2,11 @@
 
 namespace mak001\portfolio\model\project\categorisation;
 
+use mak001\portfolio\model\project\Project;
+use mak001\portfolio\model\project\ProjectHolder;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -42,13 +45,25 @@ trait ProjectHolderObject
      * @param $holder
      * @return string
      */
-    public function getLink($holder)
+    public function getLink($holder = null)
     {
-        return Controller::join_links(
-            $holder->Link(),
-            $this->getListUrlSegment(),
-            $this->URLSegment
-        );
+        if ($holder == null) {
+            $holder = Director::get_current_page();
+        }
+
+        if ($holder instanceof Project) {
+            $holder = $holder->Parent();
+        }
+
+        if ($holder instanceof ProjectHolder) {
+            return Controller::join_links(
+                $holder->Link(),
+                $this->getListUrlSegment(),
+                $this->URLSegment
+            );
+        }
+
+        return '';
     }
 
     /**

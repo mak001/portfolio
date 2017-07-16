@@ -7,9 +7,6 @@
         <testsuite name="admin">
             <directory suffix="Test.php">portfolio/tests/admin/</directory>
         </testsuite>
-        <testsuite name="controllers">
-            <directory suffix="Test.php">portfolio/tests/controllers/</directory>
-        </testsuite>
         <testsuite name="extensions">
             <directory suffix="Test.php">portfolio/tests/extensions/</directory>
         </testsuite>
