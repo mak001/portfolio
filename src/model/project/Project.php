@@ -6,11 +6,14 @@ use mak001\portfolio\model\project\categorisation\Framework;
 use mak001\portfolio\model\project\categorisation\Language;
 
 use \Page;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use SilverStripe\Forms\TextareaField;
 use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 use SilverStripe\View\Requirements;
 
@@ -88,6 +91,28 @@ class Project extends Page
 
         $fields = parent::getCMSFields();
 
+        // Teaser
+        $fields->addFieldsToTab("Root.Main", array(
+            TextareaField::create('Teaser', 'Teaser')
+        ), 'Content');
+
+        // Images
+        $fields->addFieldsToTab('Root.Photos', array(
+            $mainImage = UploadField::create('MainPhoto'),
+            CheckboxField::create('MainImageHasLogo'),
+            CheckboxField::create('MainImageCropMiddle', 'Crop main image from the middle')
+        ));
+
+        $mainImage->getValidator()->setAllowedExtensions(array(
+            'png',
+            'gif',
+            'jpg',
+            'jpeg'
+        ));
+
+        $mainImage->setFolderName('project-photos/main');
+
+        // Languages / Frameworks
         $config = GridFieldConfig_RelationEditor::create();
 
         if (class_exists(GridFieldAddExistingSearchButton::class)) {
@@ -106,6 +131,5 @@ class Project extends Page
         ));
         return $fields;
     }
-
 
 }
