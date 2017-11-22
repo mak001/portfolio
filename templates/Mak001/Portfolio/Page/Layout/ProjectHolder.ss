@@ -17,19 +17,17 @@
 </div>
 
 <% if $PaginatedLanguages %>
-    <div class="card-deck">
+    <div class="card-deck justify-content-center">
         <% loop $PaginatedLanguages %>
-            <div class="col-md-6 col-xl-4 py-2 mx-auto">
-                <div class="card uses">
-                    <a href="$Link">
-                        <h4 class="card-title" style="background-color: #$BGColor">$Title</h4>
-                    </a>
-                    <div class="card-block">
-                        <p class="card-text">$Description</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="$Link" class="btn btn-primary">Projects</a>
-                    </div>
+            <div class="card uses col-md-6 col-xl-4 py-2">
+                <a href="$Link">
+                    <h4 class="card-title" style="background-color: #$BGColor">$Title</h4>
+                </a>
+                <div class="card-block">
+                    <p class="card-text">$Description</p>
+                </div>
+                <div class="card-footer">
+                    <a href="$Link" class="btn btn-primary">Projects</a>
                 </div>
             </div>
         <% end_loop %>
@@ -40,19 +38,17 @@
     <% end_with %>
 
 <% else_if $PaginatedFrameworks %>
-    <div class="card-deck">
+    <div class="card-deck justify-content-center">
         <% loop $PaginatedFrameworks %>
-            <div class="col-md-6 col-xl-4 py-2 mx-auto">
-                <div class="card uses">
-                    <a href="$Link">
-                        <h4 class="card-title" style="background-color: #$BGColor">$Title</h4>
-                    </a>
-                    <div class="card-block">
-                        <p class="card-text">$Description</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="$Link" class="btn btn-primary">Projects</a>
-                    </div>
+            <div class="card uses col-md-6 col-xl-4 py-2">
+                <a href="$Link">
+                    <h4 class="card-title" style="background-color: #$BGColor">$Title</h4>
+                </a>
+                <div class="card-block">
+                    <p class="card-text">$Description</p>
+                </div>
+                <div class="card-footer">
+                    <a href="$Link" class="btn btn-primary">Projects</a>
                 </div>
             </div>
         <% end_loop %>
@@ -87,38 +83,38 @@
     <% end_if %>
 
 
-    <div class="card-deck">
+    <div class="card-deck justify-content-center">
         <% loop $PaginatedProjects %>
-                <div class="card project col-md-6 col-xl-4 px-0">
+            <div class="card project col-md-6 col-xl-4 px-0">
 
-                    <a href="$Link">
-                        <% if $MainPhoto %>
-                            <img class="card-img-top img-fluid"
-                                 src="$MainPhoto.FillMax(510, 200).URL"
-                                 alt="$MainPhoto.ALT">
+                <a href="$Link">
+                    <% if $MainPhoto %>
+                        <img class="card-img-top img-fluid"
+                             src="$MainPhoto.FillMax(510, 200).URL"
+                             alt="$MainPhoto.ALT">
+                    <% else %>
+                        <img class="card-img-top img-fluid"
+                             src="/portfolio/img/code.png"
+                             alt="$Title Photo">
+                    <% end_if %>
+                </a>
+
+                <div class="card-block">
+                    <h4 class="card-title">$Title</h4>
+                    <p class="card-text">
+                        <% if $Teaser %>
+                            $Teaser
                         <% else %>
-                            <img class="card-img-top img-fluid"
-                                 src="/portfolio/img/code.png"
-                                 alt="$Title Photo">
+                            $Content.FirstSentence
                         <% end_if %>
-                    </a>
+                    </p>
+                </div>
 
-                    <div class="card-block">
-                        <h4 class="card-title">$Title</h4>
-                        <p class="card-text">
-                            <% if $Teaser %>
-                                $Teaser
-                            <% else %>
-                                $Content.FirstSentence
-                            <% end_if %>
-                        </p>
+                <div class="card-footer">
+                    <div class="btn-container">
+                        <a href="$Link" class="btn btn-primary">Details...</a>
                     </div>
-
-                    <div class="card-footer">
-                        <div class="btn-container">
-                            <a href="$Link" class="btn btn-primary">Details...</a>
-                        </div>
-                    </div>
+                </div>
 
             </div>
         <% end_loop %>
