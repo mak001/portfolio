@@ -1,12 +1,13 @@
+<% require css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') %>
 <% if $MainPhoto %>
     <% if $MainImageHasLogo %>
         <div class="jumbotron bg-info text-center $ExtraClasses" id="project-header"
-             style="background-image: url($MainPhotoResizeLink(1110, 350))">
+             style="background-image: url($MainPhoto.FillMax(1110, 350).URL)">
             <h1 class="sr-only">$Title</h1>
         </div>
     <% else %>
         <div class="jumbotron bg-info text-center overlay $ExtraClasses" id="project-header"
-             style="background-image: url($MainPhotoResizeLink(1110, 350))">
+             style="background-image: url($MainPhoto.FillMax(1110, 350).URL)">
             <div class="container">
                 <h1 class="display-4">$Title</h1>
             </div>

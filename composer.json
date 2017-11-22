@@ -1,52 +1,30 @@
 {
-  "name": "mak001/portfolio",
-  "description": "Website module for MatthewKoerber.com",
-  "authors": [
-    {
-      "name": "Matthew Koerber",
-      "email": "matthew@matthewkoerber.com",
-      "homepage": "http://matthewkoerber.com"
-    }
-  ],
-  "keywords": [
-    "silverstripe"
-  ],
-  "type": "silverstripe-module",
-  "license": "BSD-3-Clause",
-  "require": {
-    "php": ">=5.3.3",
-
-    "silverstripe/framework": "^4.0",
-    "silverstripe/cms": "^4.0",
-    "silverstripe/asset-admin": "^1.0",
-    "silverstripe/siteconfig": "4.0.x-dev",
-    "silverstripe/reports": "4.0.x-dev",
-    "silverstripe/versioned": "1.0.x-dev",
-
-    "symbiote/silverstripe-gridfieldextensions": "^3.0",
-    "tractorcow/silverstripe-colorpicker": "^4@dev",
-
-    "silverstripe/lumberjack": "^2.0"
-  },
-  "require-dev": {
-    "phpunit/PHPUnit": "~5.7@stable"
-  },
-  "autoload": {
-    "psr-4": {
-      "mak001\\portfolio\\": "src/",
-      "mak001\\portfolio\\tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "installer-name": "portfolio",
+    "name": "mak001/silverstripe-projects",
+    "description": "A module for projects",
+    "type": "silverstripe-vendormodule",
+    "require": {
+        "silverstripe/recipe-cms": "^1.0",
+        "silverstripe/vendor-plugin": "^1.0",
+        "symbiote/silverstripe-gridfieldextensions": "^3.0",
+        "tractorcow/silverstripe-colorpicker": "^4@dev",
+        "silverstripe/lumberjack": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/PHPUnit": "^5.7",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "config": {
+        "process-timeout": 600
+    },
+    "autoload": {
+        "psr-4": {
+            "Mak001\\Portfolio\\": "src/",
+            "Mak001\\Portfolio\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "branch-alias": {
-      "dev-silverstripe-4": "2.x-dev",
-      "dev-master": "2.x-dev"
+        "dev-master": "3.0.x-dev"
     }
-  },
-  "config": {
-    "process-timeout": 600
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
 }

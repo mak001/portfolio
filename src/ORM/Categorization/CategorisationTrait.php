@@ -1,41 +1,71 @@
 <?php
 
-namespace mak001\portfolio\model\project\categorisation;
+namespace Mak001\Portfolio\ORM\Categorization;
 
-use mak001\portfolio\model\project\Project;
-use mak001\portfolio\model\project\ProjectHolder;
+use Mak001\Portfolio\Page\Project;
+use Mak001\Portfolio\Page\ProjectHolder;
 use SilverStripe\CMS\Forms\SiteTreeURLSegmentField;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
+use TractorCow\Colorpicker\Color;
 use TractorCow\Colorpicker\Forms\ColorField;
 
-trait ProjectHolderObject
+/**
+ * Trait CategorisationTrait
+ */
+trait CategorisationTrait
 {
+    /**
+     * @var array
+     */
+    private static $db = array(
+        'Title' => 'Varchar',
+        'BGColor' => Color::class,
+        'URLSegment' => 'Varchar',
+        'Description' => 'Text'
+    );
+
+    /**
+     * Add an SQL index for the URLSegment
+     *
+     * @var array
+     */
+    private static $indexes = array(
+        "URLSegment" => array(
+            'type' => 'unique',
+            'columns' => ['URLSegment']
+        )
+    );
+
+    /**
+     * @var array
+     */
+    private static $belongs_many_many = array(
+        'Projects' => Project::class
+    );
+
     /**
      * {@inheritdoc}
      */
     public function getCMSFields()
     {
-        $urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
-
+        $urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'), 'Title');
         $prefix = $this->getUrlPrefix();
         $urlsegment->setURLPrefix($prefix);
-
         $helpText = _t('SiteTreeURLSegmentField.HelpChars',
             ' Special characters are automatically converted or removed.');
         $urlsegment->setHelpText($helpText);
-
         $fields = FieldList::create(array(
             TextField::create('Title'),
             $urlsegment,
             new ColorField('BGColor', 'Background Color'),
             TextareaField::create('Description')
         ));
-
         $this->extend('updateCMSFields', $fields);
+
         return $fields;
     }
 
@@ -43,6 +73,7 @@ trait ProjectHolderObject
      * Returns a relative link to this category.
      *
      * @param $holder
+     *
      * @return string
      */
     public function getLink($holder = null)
@@ -50,11 +81,9 @@ trait ProjectHolderObject
         if ($holder == null) {
             $holder = Director::get_current_page();
         }
-
         if ($holder instanceof Project) {
             $holder = $holder->Parent();
         }
-
         if ($holder instanceof ProjectHolder) {
             return Controller::join_links(
                 $holder->Link(),
@@ -87,5 +116,4 @@ trait ProjectHolderObject
      * @return string
      */
     abstract protected function getListUrlSegment();
-
 }

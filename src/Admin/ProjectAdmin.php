@@ -1,12 +1,11 @@
 <?php
 
 
-namespace mak001\portfolio\admin;
+namespace Mak001\Portfolio\Admin;
 
 
-use mak001\portfolio\model\project\categorisation\Framework;
-use mak001\portfolio\model\project\categorisation\Language;
-use mak001\portfolio\model\project\Project;
+use Mak001\Portfolio\ORM\Categorization\Framework;
+use Mak001\Portfolio\ORM\Categorization\Language;
 use SilverStripe\Admin\ModelAdmin;
 
 class ProjectAdmin extends ModelAdmin

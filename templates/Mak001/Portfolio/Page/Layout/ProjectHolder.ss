@@ -1,3 +1,4 @@
+<% require css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') %>
 <% if not $Pages || $Pages.Count == 1 %>
     <div>
         $Content
@@ -35,7 +36,7 @@
     </div>
 
     <% with $PaginatedLanguages %>
-        <% include Pagination %>
+        <% include Mak001\Portfolio\Pagination %>
     <% end_with %>
 
 <% else_if $PaginatedFrameworks %>
@@ -58,7 +59,7 @@
     </div>
 
     <% with $PaginatedFrameworks %>
-        <% include Pagination %>
+        <% include Mak001\Portfolio\Pagination %>
     <% end_with %>
 
 <% else_if $PaginatedProjects %>
@@ -66,10 +67,10 @@
     <% if $SelectedLanguage %>
         <div class="container row">
             <div class="col-md-8 col-lg-6 mx-auto text-center uses-header">
-                <hr class="col-12"/>
+                <hr class="col-12" />
                 <h3>$SelectedLanguage.Title</h3>
                 <p>$SelectedLanguage.Description</p>
-                <hr class="col-12"/>
+                <hr class="col-12" />
             </div>
         </div>
     <% end_if %>
@@ -77,10 +78,10 @@
     <% if $SelectedFramework %>
         <div class="container row">
             <div class="col-md-8 col-lg-6 mx-auto text-center uses-header">
-                <hr class="col-12"/>
+                <hr class="col-12" />
                 <h3>$SelectedFramework.Title</h3>
                 <p>$SelectedFramework.Description</p>
-                <hr class="col-12"/>
+                <hr class="col-12" />
             </div>
         </div>
     <% end_if %>
@@ -88,13 +89,12 @@
 
     <div class="card-deck">
         <% loop $PaginatedProjects %>
-            <div class="col-md-6 col-xl-4 py-2 mx-auto">
-                <div class="card project">
+                <div class="card project col-md-6 col-xl-4 px-0">
 
                     <a href="$Link">
                         <% if $MainPhoto %>
                             <img class="card-img-top img-fluid"
-                                 src="$MainPhotoResizeLink(510, 200)"
+                                 src="$MainPhoto.FillMax(510, 200).URL"
                                  alt="$MainPhoto.ALT">
                         <% else %>
                             <img class="card-img-top img-fluid"
@@ -120,12 +120,11 @@
                         </div>
                     </div>
 
-                </div>
             </div>
         <% end_loop %>
     </div>
     <% with $PaginatedProjects %>
-        <% include Pagination %>
+        <% include Mak001\Portfolio\Pagination %>
     <% end_with %>
 
 <% else %>
